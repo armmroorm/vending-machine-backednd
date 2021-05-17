@@ -19,22 +19,28 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
     AuthModule,
     AdminModule,
     ConfigModule.forRoot({
-      isGlobal: true, // no need to import into other modules
+      isGlobal: true,
     }),
-    MailerModule.forRootAsync({
-      useFactory: () => ({
-        transport: 'smtps://user@domain.com:pass@smtp.domain.com',
-        defaults: {
-          from: '"nest-modules" <modules@nestjs.com>',
+    MailerModule.forRoot({
+      transport: {
+        host: process.env.MAIL_HOST,
+        port: 587,
+        secure: false,
+        auth: {
+          user: process.env.MAIL_USER,
+          pass: process.env.MAIL_PASSWORD,
         },
-        template: {
-          dir: __dirname + '/templates',
-          adapter: new HandlebarsAdapter(),
-          options: {
-            strict: true,
-          },
+      },
+      defaults: {
+        from: `"No Reply" <${process.env.MAIL_FROM}>`,
+      },
+      template: {
+        dir: process.cwd() + '/templates/',
+        adapter: new HandlebarsAdapter(), // or new PugAdapter()
+        options: {
+          strict: true,
         },
-      }),
+      },
     }),
   ],
 })

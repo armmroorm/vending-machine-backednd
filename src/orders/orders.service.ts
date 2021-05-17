@@ -15,7 +15,6 @@ export class OrdersService {
     @InjectRepository(OrdersEntity)
     private ordersRepository: Repository<OrdersEntity>,
     private productService: ProductService,
-    private mailService: MailService,
   ) {}
 
   GetAll = async (): Promise<any> => {
@@ -31,7 +30,6 @@ export class OrdersService {
     if (product.number <= 0) {
       throw new NotFoundException(`Orders with id : ${productId} is sold out`);
     }
-    await this.mailService.sendNotificationToAddmin();
 
     const uuid = await this.GenerateUUID();
     const order = new OrdersEntity();

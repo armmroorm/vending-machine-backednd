@@ -1,9 +1,9 @@
 import {
   ConflictException,
   Injectable,
-  InternalServerErrorException,
-  UnauthorizedException,
-} from '@nestjs/common';
+  InternalServerErrorException, NotFoundException,
+  UnauthorizedException
+} from "@nestjs/common";
 import { InjectRepository } from '@nestjs/typeorm';
 import { Admin } from './Entity/admin.entity';
 import { Repository } from 'typeorm';
@@ -63,5 +63,15 @@ export class AdminService {
     } catch (e) {
       throw new UnauthorizedException('Invalid authorize');
     }
+  };
+
+  QueryById = async (id) => {
+    const admin = await this.adminRepository.findOne(id);
+
+    if (!admin) {
+      throw new NotFoundException(`Admin with id : ${id} not found`);
+    }
+
+    return admin;
   };
 }

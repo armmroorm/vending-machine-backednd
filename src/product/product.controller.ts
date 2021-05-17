@@ -17,7 +17,7 @@ import { Response } from 'express';
 import { CreateProductDto } from './dto/create-product.dto';
 import { IdValidatePipe } from '../utils/id-validate-pipe';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { NumberTransformPipe } from "../utils/number-transform-pipe";
+import { NumberTransformPipe } from '../utils/number-transform-pipe';
 
 @Controller('product')
 export class ProductController {
@@ -26,6 +26,12 @@ export class ProductController {
   @Get()
   async getGallery(@Res() res: Response) {
     const data = await this.productService.GetAll();
+    res.status(HttpStatus.OK).send(data);
+  }
+
+  @Get('checkStock')
+  async checkStock(@Res() res: Response) {
+    const data = await this.productService.checkStock();
     res.status(HttpStatus.OK).send(data);
   }
 
