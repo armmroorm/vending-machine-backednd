@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "dab842e2-3357-47a1-ab8e-a7d8786b7f6f",
+		"name": "vending_machine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getIMachine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/machine"
+			},
+			"response": []
+		},
+		{
+			"name": "create machine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "machineName",
+							"value": "machine no.2",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "13.7782992,100.4763837",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "1 ถนน บรมราชชนนี แขวง อรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8000/machine"
+			},
+			"response": []
+		},
+		{
+			"name": "update machine",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "machineName",
+							"value": "Machine no.4",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "13.7782992,100.4763837",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "1 ถนน บรมราชชนนี แขวง อรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/machine/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"machine",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/product"
+			},
+			"response": []
+		},
+		{
+			"name": "create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productName",
+							"value": "Pepsi",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "13",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "machineId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8000/product"
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "machineId",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/product/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "placeOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "productId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "totalPrice",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "totalNumber",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "machineId",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "productName",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "orderSn",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": "http://localhost:8000/orders/placeOrder"
+			},
+			"response": []
+		},
+		{
+			"name": "admin signUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "armmroorm",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "fonarts05@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8000/admin/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "checkStock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/product/checkStock"
+			},
+			"response": []
+		}
+	]
+}
