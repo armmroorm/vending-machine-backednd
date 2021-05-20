@@ -1,9 +1,10 @@
 import {
   ConflictException,
   Injectable,
-  InternalServerErrorException, NotFoundException,
-  UnauthorizedException
-} from "@nestjs/common";
+  InternalServerErrorException,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Admin } from './Entity/admin.entity';
 import { Repository } from 'typeorm';
